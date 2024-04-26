@@ -23,8 +23,8 @@ const MobileNavLinks = () => {
 		<>
 			<Link
 				to="/user-profile" 
-				className="flex bg-white items-center font-bold hover:text-orange-500">
-				User Profile
+				className="flex bg-white items-center font-bold hover:text-orange-500 tracking-tighter">
+				My Profile
 			</Link>
 			<Button
 				onClick={() => logout()} 

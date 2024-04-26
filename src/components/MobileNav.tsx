@@ -39,7 +39,7 @@ const MobileNav = () => {
 							{user?.email}
 						</span>
 					) : (
-						<span>Welcome to TimeLY.com</span>	
+						<span className="tracking-tighter">Welcome to TastyTreat.com</span>	
 					)}
 				</SheetTitle>
 				<Separator />

@@ -1,5 +1,6 @@
 import { useGetMyUser, useUpdateMyUser } from "@/api/MyUserApi";
 import UserProfileForm from "@/forms/user-profile-form/UserProfileForm";
+import { Loader2 } from "lucide-react";
 
 const UserProfilePage = () => {
 	const {currentUser, isLoading: isGetLoading} = useGetMyUser();
@@ -7,7 +8,7 @@ const UserProfilePage = () => {
 
 	if (isGetLoading) {
 		return(
-			<span>Loading...</span>
+			<><Loader2 className="mr-2 h-4 w-4 animate-spin" /><span>Loading...</span></>
 		);
 	}
 
