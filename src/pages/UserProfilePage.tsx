@@ -8,13 +8,16 @@ const UserProfilePage = () => {
 
 	if (isGetLoading) {
 		return(
-			<><Loader2 className="mr-2 h-4 w-4 animate-spin" /><span>Loading...</span></>
+			<>
+				<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+				<span className="font-bold text-xl">Loading...</span>
+			</>
 		);
 	}
 
 	if (!currentUser) {
 		return(
-			<span>Unable to load user profile</span>
+			<span className="font-bold text-xl">Unable to load user profile</span>
 		);
 	}
 	

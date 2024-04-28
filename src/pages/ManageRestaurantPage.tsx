@@ -7,17 +7,27 @@ import {
 //import OrderItemCard from "@/components/OrderItemCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ManageRestaurantForm from "@/forms/manage-restaurant-form/ManageRestaurantForm";
+import { Loader2 } from "lucide-react";
 
 const ManageRestaurantPage = () => {
   const { createRestaurant, isLoading: isCreateLoading } =
     useCreateMyRestaurant();
-  const { restaurant } = useGetMyRestaurant();
+  const { restaurant, isLoading: isGetLoading } = useGetMyRestaurant();
   const { updateRestaurant, isLoading: isUpdateLoading } =
     useUpdateMyRestaurant();
 
   const { orders } = useGetMyRestaurantOrders();
 
   const isEditing = !!restaurant;
+
+  if (isGetLoading) {
+		return(
+			<>
+				<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+				<span className="font-bold text-xl">Loading...</span>
+			</>
+		);
+	}
 
   return (
     <Tabs defaultValue="orders">
