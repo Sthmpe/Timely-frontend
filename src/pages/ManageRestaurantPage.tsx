@@ -4,30 +4,20 @@ import {
   useGetMyRestaurantOrders,
   useUpdateMyRestaurant,
 } from "@/api/MyRestaurantApi";
-//import OrderItemCard from "@/components/OrderItemCard";
+import OrderItemCard from "@/components/OrderItemCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ManageRestaurantForm from "@/forms/manage-restaurant-form/ManageRestaurantForm";
-import { Loader2 } from "lucide-react";
 
 const ManageRestaurantPage = () => {
   const { createRestaurant, isLoading: isCreateLoading } =
     useCreateMyRestaurant();
-  const { restaurant, isLoading: isGetLoading } = useGetMyRestaurant();
+  const { restaurant } = useGetMyRestaurant();
   const { updateRestaurant, isLoading: isUpdateLoading } =
     useUpdateMyRestaurant();
 
   const { orders } = useGetMyRestaurantOrders();
 
   const isEditing = !!restaurant;
-
-  if (isGetLoading) {
-		return(
-			<>
-				<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-				<span className="font-bold text-xl">Loading...</span>
-			</>
-		);
-	}
 
   return (
     <Tabs defaultValue="orders">
@@ -40,9 +30,9 @@ const ManageRestaurantPage = () => {
         className="space-y-5 bg-gray-50 p-10 rounded-lg"
       >
         <h2 className="text-2xl font-bold">{orders?.length} active orders</h2>
-        {/*orders?.map((order) => (
+        {orders?.map((order) => (
           <OrderItemCard order={order} />
-        ))*/}
+        ))}
       </TabsContent>
       <TabsContent value="manage-restaurant">
         <ManageRestaurantForm

@@ -17,6 +17,12 @@ const formSchema = z
     restaurantName: z.string({
       required_error: "restuarant name is required",
     }),
+    city: z.string({
+      required_error: "city is required",
+    }),
+    country: z.string({
+      required_error: "country is required",
+    }),
     deliveryPrice: z.coerce.number({
       required_error: "delivery price is required",
       invalid_type_error: "must be a valid number",
@@ -87,6 +93,9 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
     const formData = new FormData();
 
     formData.append("restaurantName", formDataJson.restaurantName);
+    formData.append("city", formDataJson.city);
+    formData.append("country", formDataJson.country);
+
     formData.append(
       "deliveryPrice",
       (formDataJson.deliveryPrice * 100).toString()

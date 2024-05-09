@@ -103,7 +103,6 @@ export const useUpdateMyRestaurant = () => {
     isSuccess,
   } = useMutation(updateRestaurantRequest);
 
-
   if (isSuccess) {
     toast.success("Restaurant Updated");
   }
